@@ -1,4 +1,4 @@
-name: Security audit
+name: Latest Commit Security Status
 on:
   push:
     paths:

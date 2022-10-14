@@ -1,4 +1,4 @@
-name: Rust
+name: Web Server Status
 
 on: [push, pull_request]
 

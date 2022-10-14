@@ -1,4 +1,4 @@
-name: Security audit
+name: Nightly Security Audit Status
 on:
   schedule:
     - cron: '0 0 * * *'
