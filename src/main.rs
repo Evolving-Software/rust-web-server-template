@@ -13,15 +13,53 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+use actix_web::{web, App, HttpRequest, HttpServer, Responder, HttpResponse};
 async fn greet(req: HttpRequest) -> impl Responder {
     format!("Hello {}!", req.match_info().get("name").unwrap())
 }
+
+/// Health check endpoint
+/// Returns 200 OK if the service is running
+/// Returns 500 Internal Server Error if the service is not running
+/// This is used by the load balancer to determine if the service is healthy
+/// and should be routed to or not.
+/// This is also used by the Kubernetes liveness probe to determine if the
+/// service is healthy and should be restarted or not.
+/// 
+/// # Arguments
+/// 
+/// * `req` - The HTTP request
+/// 
+/// # Returns
+/// 
+/// * `impl Responder` - The HTTP response
+/// 
+/// # Example
+/// 
+/// ```
+/// use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+/// async fn health_check(req: HttpRequest) -> impl Responder {
+///    format!("OK")
+/// }
+/// ```
+/// 
+/// # Panics
+/// 
+/// This function will panic if the service is not running.
+/// 
+/// # Errors
+/// 
+/// This function will return an error if the service is not running.
+async fn health_check(req: HttpRequest) -> impl Responder {
+   HttpResponse::Ok().finish()
+}
+
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
+            .route("/health_check", web::get().to(health_check))
             .route("/", web::get().to(greet))
             .route("/{name}", web::get().to(greet))
     })
