@@ -2,7 +2,7 @@
 
 
 # Rust Web Server Template
-[![Web Server Status](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/general.yml/badge.svg?event=status)](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/general.yml)  [![Latest Commit Security Status](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/audit-on-push.yml/badge.svg?event=status)](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/audit-on-push.yml) [![Nightly Security Audit Status](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/scheduled-workflow.yml/badge.svg?branch=main&event=status)](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/scheduled-workflow.yml)
+[![Web Server Status](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/general.yml/badge.svg)](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/general.yml)  [![Latest Commit Security Status](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/audit-on-push.yml/badge.svg)](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/audit-on-push.yml) [![Nightly Security Audit Status](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/scheduled-workflow.yml/badge.svg)](https://github.com/Evolving-Software/rust-web-server-template/actions/workflows/scheduled-workflow.yml)
 
 
 
