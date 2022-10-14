@@ -12,3 +12,20 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+async fn greet(req: HttpRequest) -> impl Responder {
+    format!("Hello {}!", req.match_info().get("name").unwrap())
+}
+
+#[tokio::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| {
+        App::new()
+            .route("/", web::get().to(greet))
+            .route("/{name}", web::get().to(greet))
+    })
+    .bind("127.0.0.1:8000")?
+    .run()
+    .await
+}
