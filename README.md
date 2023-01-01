@@ -25,6 +25,13 @@ This is a template for a web server written in Rust. It's intended to be a start
 
 ## Usage
 
+### Pre-Requsites
+#### Windows
+```bash
+cargo install -f cargo-binutils
+rustup component add llvm-tools-preview
+````
+
 To use this template, first install [Rust](https://www.rust-lang.org/). Then:
 
     $ git clone

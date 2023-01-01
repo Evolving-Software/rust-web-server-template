@@ -25,6 +25,7 @@ use actix_web::{
 use actix_web_lab::respond::Html;
 use std::collections::HashMap;
 use tera::Tera;
+use rust_web_server_template::run;
 
 // store tera template in application state
 async fn init_tera(
@@ -90,7 +91,7 @@ async fn health_check(req: HttpRequest) -> impl Responder {
 }
 
 #[tokio::main]
-async fn main() -> std::io::Result<()> {
+async fn run() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "actix_web=info");
     env_logger::init();
     println!("Listening on: 127.0.0.1:8080, open browser and visit have a try!");
