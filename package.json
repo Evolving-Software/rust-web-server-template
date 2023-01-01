@@ -1,5 +1,5 @@
 {
-  "name": "rust-web-server-template",
+  "name": "rust_web_server_template",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/Evolving-Software/rust-web-server-template.git",

@@ -23,9 +23,9 @@ use actix_web::{
     web, App, Error, HttpRequest, HttpResponse, HttpServer, Responder, Result,
 };
 use actix_web_lab::respond::Html;
-use std::collections::HashMap;
+use rust_web::startup::run;
+use std::{collections::HashMap, net::TcpListener};
 use tera::Tera;
-use rust_web_server_template::run;
 
 // store tera template in application state
 async fn init_tera(
@@ -91,24 +91,13 @@ async fn health_check(req: HttpRequest) -> impl Responder {
 }
 
 #[tokio::main]
-async fn run() -> std::io::Result<()> {
-    std::env::set_var("RUST_LOG", "actix_web=info");
-    env_logger::init();
-    println!("Listening on: 127.0.0.1:8080, open browser and visit have a try!");
-    HttpServer::new(|| {
-        let tera = Tera::new(concat!(env!("CARGO_MANIFEST_DIR"), "/src/views/**/*")).unwrap();
-
-        App::new()
-            .service(fs::Files::new("/public", "./public").show_files_listing())
-            .app_data(web::Data::new(tera))
-            .route("/health_check", web::get().to(health_check))
-            .wrap(middleware::Logger::default()) // enable logger
-            .route("/", web::get().to(init_tera))
-            .route("/{name}", web::get().to(greet))
-    })
-    .bind("127.0.0.1:8080")?
-    .run()
-    .await
+async fn main() -> std::io::Result<()> {
+    // std::env::set_var("RUST_LOG", "actix_web=info");
+    // env_logger::init();
+    // println!("Listening on: 127.0.0.1:8080, open browser and visit have a try!");
+    let address = format!("127.0.0.1:{}", 8080);
+    let listener = TcpListener::bind(address)?;
+    run(listener)?.await
 }
 
 // Custom error handlers, to return HTML responses when an error occurs.
