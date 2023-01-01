@@ -1,0 +1,18 @@
+{
+  "name": "rust-web-server-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Evolving-Software/rust-web-server-template.git",
+  "author": "Administrator <info@evolvingsoftware.io>",
+  "license": "MIT",
+  "scripts": {
+    "server": "cargo watch -x check -x test -x clippy -x fmt -x run",
+    "tailwind:dev": "npx tailwindcss -i ./src/tailwind.css -o ./public/styles.css --watch",
+    "tailwind:build": "npx tailwindcss -i ./src/tailwind.css -o ./public/styles.css --minify",
+    "dev": "concurrently \"yarn tailwind:dev\" \" yarn server\""
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "concurrently": "^7.6.0"
+  }
+}
