@@ -13,46 +13,17 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use actix_files as fs;
 use actix_web::{
     body::BoxBody,
     dev::ServiceResponse,
-    error,
     http::{header::ContentType, StatusCode},
-    middleware::{self, ErrorHandlerResponse, ErrorHandlers},
-    web, App, Error, HttpRequest, HttpResponse, HttpServer, Responder, Result,
+    middleware::{ErrorHandlerResponse, ErrorHandlers},
+    web, HttpResponse, Result,
 };
-use actix_web_lab::respond::Html;
+
 use rust_web::startup::run;
-use std::{collections::HashMap, net::TcpListener};
+use std::net::TcpListener;
 use tera::Tera;
-
-// store tera template in application state
-async fn init_tera(
-    tmpl: web::Data<tera::Tera>,
-    query: web::Query<HashMap<String, String>>,
-) -> Result<impl Responder, Error> {
-    let s: String = if let Some(name) = query.get("name") {
-        // Create context to store the state.
-        let mut ctx = tera::Context::new();
-        // Insert name into the context
-        ctx.insert("name", name);
-        // Insert text into the context.
-        ctx.insert("text", "Welcome!");
-        // Render the template and the context.
-        tmpl.render("user.html", &ctx)
-            .map_err(|_| error::ErrorInternalServerError("Template Error"))?
-    } else {
-        tmpl.render("index.html", &tera::Context::new())
-            .map_err(|_| error::ErrorInternalServerError("Template error"))?
-    };
-
-    Ok(Html(s))
-}
-
-async fn greet(req: HttpRequest) -> impl Responder {
-    format!("Hello {}!", req.match_info().get("name").unwrap())
-}
 
 /// Health check endpoint
 /// Returns 200 OK if the service is running
@@ -86,9 +57,6 @@ async fn greet(req: HttpRequest) -> impl Responder {
 /// # Errors
 ///
 /// This function will return an error if the service is not running.
-async fn health_check(req: HttpRequest) -> impl Responder {
-    HttpResponse::Ok().finish()
-}
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {

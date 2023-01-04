@@ -1,13 +1,13 @@
 use crate::routes::health_check;
 use actix_files as fs;
 use actix_web::dev::Server;
-use actix_web::web::Data;
 use actix_web::{error, middleware, web, App, Error, HttpServer, Responder};
 use actix_web_lab::respond::Html;
 use std::collections::HashMap;
 use std::net::TcpListener;
 use tera::Tera;
 
+// store tera template in application state
 async fn init_tera(
     tmpl: web::Data<tera::Tera>,
     query: web::Query<HashMap<String, String>>,
@@ -30,8 +30,7 @@ async fn init_tera(
     Ok(Html(s))
 }
 
-#[tokio::main]
-pub async fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
+pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
     std::env::set_var("RUST_LOG", "actix_web=info");
     env_logger::init();
     println!("Listening on: 127.0.0.1:8080, open browser and visit have a try!");
