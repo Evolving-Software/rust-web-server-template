@@ -17,8 +17,8 @@
 extern crate rocket;
 mod models;
 use rocket::fs::{relative, FileServer};
-use rocket_dyn_templates::{context, Template};
-use rust_web::routes::{login::login, index::index, user::login::login_post};
+use rocket_dyn_templates::{ Template};
+use rust_web::routes::{login::login, index::index};
 
 // swithcing to rocket for simplicity
 

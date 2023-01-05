@@ -20,7 +20,7 @@ pub struct UserLogin {
 }
 
 impl UserLogin {
-    pub fn login(&self) -> Result<Redirect, Flash<Redirect>> {
+    pub fn user_Login(&self) -> Result<Redirect, Flash<Redirect>> {
         if self.username == "Riley" && self.password == "123" {
             Ok(Redirect::to("/"))
         } else {
