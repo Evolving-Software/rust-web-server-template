@@ -1,9 +1,7 @@
 pub mod login;
-pub mod welcome;
 pub mod register;
-
-
+pub mod welcome;
 
 pub use login::*;
-pub use welcome::*;
 pub use register::*;
+pub use welcome::*;
