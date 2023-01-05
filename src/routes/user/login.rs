@@ -1,5 +1,9 @@
 use crate::models::user::UserLogin;
-use rocket::{form::Form, response::{Redirect, Flash}, http::CookieJar};
+use rocket::{
+    form::Form,
+    http::CookieJar,
+    response::{Flash, Redirect},
+};
 use rocket_dyn_templates::{context, Template};
 
 // Get Login page, if the cookie is set, redirect to welcome page
@@ -33,6 +37,9 @@ pub fn get_login(cookies: &CookieJar<'_>) -> Template {
 
 // Post Login page
 #[post("/login", data = "<user_login_data>")]
-pub fn post_login(_jar: &CookieJar<'_>, user_login_data: Form<UserLogin>) -> Result<Template, Flash<Redirect>> {
+pub fn post_login(
+    _jar: &CookieJar<'_>,
+    user_login_data: Form<UserLogin>,
+) -> Result<Template, Flash<Redirect>> {
     user_login_data.user_login()
 }
