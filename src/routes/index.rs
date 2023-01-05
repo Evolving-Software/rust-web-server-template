@@ -1,6 +1,5 @@
 use rocket::fs::{relative, FileServer};
 use rocket_dyn_templates::{context, Template};
-use rust_web::routes::login::login;
 
 
 #[get("/")]

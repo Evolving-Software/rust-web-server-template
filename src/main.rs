@@ -15,22 +15,13 @@
 
 #[macro_use]
 extern crate rocket;
-
+mod models;
 use rocket::fs::{relative, FileServer};
 use rocket_dyn_templates::{context, Template};
-use rust_web::routes::login::login;
+use rust_web::routes::{login::login, index::index, user::login::login_post};
 
 // swithcing to rocket for simplicity
 
-#[get("/")]
-fn index() -> Template {
-    Template::render(
-        "index",
-        context! {
-            foo: 123,
-        },
-    )
-}
 
 #[launch]
 fn rocket() -> _ {
