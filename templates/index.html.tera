@@ -1,13 +1,13 @@
-{% extends "base.html" %}
+{% extends "base" %}
 {% block title %}Index{% endblock title %}
 {% block head %}
 {{ super() }}
 {% endblock head %}
 {% block content %}
-<main>
+<main class="dark:bg-slate-500">
   <div class="relative px-6 lg:px-8">
     <div class="mx-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40">
-      <div>
+      <div class="">
         <div class="hidden sm:mb-8 sm:flex sm:justify-center">
           <div
             class="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
@@ -19,7 +19,7 @@
           </div>
         </div>
         <div>
-          <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">Login To The Application
+          <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl dark:text-slate-400">Login To The Application
           </h1>
           <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-center">Username: root</p>
           <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-center">Password: root</p>
@@ -30,8 +30,8 @@
                 <form>
                   <label for="username" class="block text-sm font-medium text-gray-700 capitalize">username</label>
                   <div class="mt-1">
-                    <input type="username" name="username" id="username"
-                      class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    <input  type="username" name="username" id="username"
+                      class="block w-full rounded-md bg-slate-400 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       placeholder="you@example.com">
                   </div>
                   <label for="password" class="block text-sm font-medium text-gray-700 capitalize">password</label>
@@ -44,8 +44,10 @@
                     class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     type='submit'>
                 </form>
+                <a  class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    href='/login'>Login</a>
               </div>
-              {# <p class="mt-2 text-sm text-red-600" id="email-error">Your password must be less than 4 characters.</p> #}
+              <p class="mt-2 text-sm text-red-600" id="email-error">Your password must be less than 4 characters.</p>
             </div>
           </div>
         </div>
@@ -65,7 +67,7 @@
             </defs>
           </svg>
         </div>
-      </div>
+      </divc>
     </div>
   </div>
 </main>

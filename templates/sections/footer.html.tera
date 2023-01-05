@@ -3,3 +3,4 @@
 <script>
   document.getElementById("currentYear").innerHTML = new Date().getFullYear();
 </script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
