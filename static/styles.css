@@ -904,16 +904,6 @@ select {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
-.bg-indigo-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
-}
-
-.bg-slate-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
-}
-
 .bg-slate-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
@@ -1156,11 +1146,6 @@ select {
 }
 
 @media (prefers-color-scheme: dark) {
-  .dark\:bg-indigo-500 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(99 102 241 / var(--tw-bg-opacity));
-  }
-
   .dark\:bg-slate-500 {
     --tw-bg-opacity: 1;
     background-color: rgb(100 116 139 / var(--tw-bg-opacity));

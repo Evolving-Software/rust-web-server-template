@@ -46,6 +46,9 @@
                 </form>
                 <a  class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     href='/login'>Login</a>
+                      <a
+                      id="fetch-data"
+                      class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Fetch Data</a>
               </div>
               <p class="mt-2 text-sm text-red-600" id="email-error">Your password must be less than 4 characters.</p>
             </div>

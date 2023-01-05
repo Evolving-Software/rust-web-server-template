@@ -7,14 +7,13 @@
     {% endblock head %}
   </head>
 
-  <body class="h-full" >
+  <body id='app' class="h-full">
     <div id="content">{% block content %}{% endblock content %}</div>
-
     <div id="footer">
       {% block footer %}
       {% include "sections/footer" ignore missing %}
       {% endblock footer %}
     </div>
   </body>
-
+  <script src="evolving.js"></script>
 </html>
