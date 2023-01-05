@@ -1,7 +1,7 @@
+use rocket::http::{Cookie, CookieJar};
+use rocket_dyn_templates::{context, Template};
 use rocket::response::{Redirect, Flash};
-use rocket_db_pools::{sqlx, Database, Connection};
-
-
+use rocket_db_pools::{sqlx, Connection, Database};
 
 // let conn = SqliteConnection::connect("sqlite::memory:").await?;
 
@@ -13,19 +13,28 @@ pub struct User {
     created_at: String,
     updated_at: String,
 }
-#[derive(FromForm)]
+#[derive(FromForm, Debug)]
 pub struct UserLogin {
     username: String,
     password: String,
 }
 
+
 impl UserLogin {
-    pub fn user_Login(&self) -> Result<Redirect, Flash<Redirect>> {
-        if self.username == "Riley" && self.password == "123" {
-            Ok(Redirect::to("/"))
+    
+  pub fn user_login(&self) -> Result<Template, Flash<Redirect>> {
+        if self.username == "root" && self.password == "root" {
+            Ok(Template::render(
+                "welcome",
+                context! {
+                    username: &self.username,
+                },
+            ))
         } else {
-            //redirect to index with error message
-            Err(Flash::error(Redirect::to("/"), "Invalid username or password"))
+            Err(Flash::error(
+                Redirect::to("/"),
+                "Invalid username or password",
+            ))
         }
     }
 }

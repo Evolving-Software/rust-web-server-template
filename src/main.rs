@@ -17,16 +17,19 @@
 extern crate rocket;
 mod models;
 use rocket::fs::{relative, FileServer};
-use rocket_dyn_templates::{ Template};
-use rust_web::routes::{login::login, index::index};
+use rocket_dyn_templates::Template;
+use rust_web::routes::{
+    index::index,
+    login::{get_login, post_login},
+    welcome::welcome,
+};
 
 // swithcing to rocket for simplicity
-
 
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/", routes![index, login])
+        .mount("/", routes![index, get_login, post_login, welcome])
         .mount("/", FileServer::from(relative!("static")))
         .attach(Template::fairing())
 }

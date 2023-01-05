@@ -30,3 +30,4 @@ document.getElementById("fetch-data").addEventListener("click", async () => {
     const data = await new Evolving().fetch("https://jsonplaceholder.typicode.com/todos/1");
     console.log(data);
 });
+
