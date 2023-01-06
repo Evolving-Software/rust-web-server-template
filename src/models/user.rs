@@ -14,6 +14,7 @@ pub struct User {
     updated_at: String,
 }
 #[derive(FromForm, Debug)]
+
 pub struct UserLogin {
     username: String,
     password: String,

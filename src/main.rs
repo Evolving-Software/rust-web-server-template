@@ -21,7 +21,7 @@ use rocket_dyn_templates::Template;
 use rust_web::routes::{
     index::index,
     login::{get_login, post_login},
-    welcome::welcome,
+    welcome::welcome, contact::get_contact_page,
 };
 
 // swithcing to rocket for simplicity
@@ -29,7 +29,7 @@ use rust_web::routes::{
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/", routes![index, get_login, post_login, welcome])
+        .mount("/", routes![index, get_login, post_login, welcome, get_contact_page])
         .mount("/", FileServer::from(relative!("static")))
         .attach(Template::fairing())
 }
