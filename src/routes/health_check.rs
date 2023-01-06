@@ -1,5 +1,5 @@
-use actix_web::HttpResponse;
+use rocket::http::Status;
 
-pub async fn health_check() -> HttpResponse {
-    HttpResponse::Ok().finish()
+pub fn health_check() -> (Status, &'static str) {
+    (Status::Ok, "OK")
 }
